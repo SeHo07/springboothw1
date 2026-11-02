@@ -4,17 +4,19 @@ import com.likelion.springsession.comment.entity.Comment;
 import java.time.LocalDateTime;
 import lombok.Getter;
 
+// comment/dto/CommentResponse.java
 @Getter
 public class CommentResponse {
 
     private final Long id;
     private final String content;
+    private final String authorNickname;    // ← 추가
     private final LocalDateTime createdAt;
 
-    public CommentResponse(Comment comment){
+    public CommentResponse(Comment comment) {
         this.id = comment.getId();
         this.content = comment.getContent();
+        this.authorNickname = comment.getAuthor().getNickname();   // ← 추가
         this.createdAt = comment.getCreatedAt();
     }
-
 }
